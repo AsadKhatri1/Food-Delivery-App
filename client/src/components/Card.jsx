@@ -4,8 +4,8 @@ const Card = () => {
     const [quantity, setQuantity] = useState([1, 2, 3, 4, 5, 6])
     const [size, setSize] = useState(['small', 'medium', 'large'])
   return (
-    <div className="card m-5 " style={{ "width": "20rem", maxHeight: '300px' }}>
-    <img src="..." className="card-img-top" alt="..." />
+    <div className="card m-5 " style={{ "width": "18rem", minWidth:'150px', height:'450px' }}>
+    <img src="https://images.pexels.com/photos/1653877/pexels-photo-1653877.jpeg?auto=compress&cs=tinysrgb&w=600" className="card-img-top" alt="..." />
     <div className="card-body">
         <h5 className="card-title">Vegeterian Pizza</h5>
         <p className="card-text">So many veggie pizza toppings would be great here.
