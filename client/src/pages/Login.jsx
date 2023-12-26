@@ -1,12 +1,15 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
+import LoginForm from '../components/LoginForm';
 
 const Login = () => {
   return (
-    <div>
-        <Navbar/>
-      Login
+    <>
+    <Navbar/>
+    <div className='container m-5'>
+        <LoginForm/>
     </div>
+    </>
   );
 }
 
