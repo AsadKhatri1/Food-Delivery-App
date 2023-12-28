@@ -1,7 +1,7 @@
 import { Button } from 'react-bootstrap';
 import React, { useState } from 'react';
 import axios from "axios"
-import cors from "cors"
+
 import { Link, useNavigate } from 'react-router-dom';
 
 const SignForm = () => {
@@ -18,22 +18,20 @@ const SignForm = () => {
     }
     const submithandler = async (e) => {
         e.preventDefault()
-        const response = await fetch('http://localhost:3001/api/users', {
-            method: 'POST',
-            headers: {
-                'Content-Type': "application/json"
-            },
-            body: JSON.stringify({
-                name: data.name,
-                email: data.email,
-                password: data.password
-            })
+   
+
+        axios.post("http://localhost:8000/api/users", {
+            name: data.name,
+            email: data.email,
+            password: data.password
+        }).then((result)=>{
+            console.log(result)
+         navigate('/login')
+
+        }).catch((err)=>{
+
+            console.log(err)
         })
-        const json = response.json()
-        console.log(json)
-        navigate('/')
-
-
     }
     return (
         <div>

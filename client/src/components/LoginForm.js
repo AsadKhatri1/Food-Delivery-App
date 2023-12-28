@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
+import axios from "axios"
 
 const LoginForm = () => {
     let navigate= useNavigate()
@@ -17,25 +18,22 @@ const LoginForm = () => {
     }
     const submithandler = async (e) => {
         e.preventDefault()
-        const response = await fetch('http://localhost:3001/api/loginuser', {
-            method: 'POST',
-            headers: {
-                'Content-Type': "application/json"
-            },
-            body: JSON.stringify({
-                
-                email: data.email,
-                password: data.password
-            })
-          
-            
+ 
+        axios.post("http://localhost:8000/api/loginuser",{
+            email: data.email,
+           password: data.password
+        }).then((result)=>{
+            console.log(result)
+            localStorage.setItem("token", result.data.authToken)
+            navigate('/')
+
+        }).catch((err)=>{
+            console.log(err)
+
         })
        
-        const json = response.json()
-        console.log(json)
-        if(json.success){
-            navigate('/')
-        }
+       
+     
    
     }
   return (
