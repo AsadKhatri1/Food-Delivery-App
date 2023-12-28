@@ -5,7 +5,9 @@ const mongoDB = async () => {
     await mongoose.connect(dburl).then(async()=>{
         console.log('db connected')
         global.fetchedData= await mongoose.connection.db.collection('food_item').find({}).toArray()
-        console.log(global.fetchedData)
+        global.fetchedCategory= await mongoose.connection.db.collection('food_category').find({}).toArray()
+        // console.log(global.fetchedData)
+        // console.log(global.fetchedCategory)
         
     }).catch((err)=>{
         console.log(err)
